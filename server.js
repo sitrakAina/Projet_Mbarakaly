@@ -1,12 +1,14 @@
-var express = require('express');
-var app = express()
-
+const express = require('express');
+const app = express()
 const route = require('./Route/route')
-var cors= require('cors')
+const cors= require('cors')
 const bodyParser = require('body-parser');
+
+
+
 app.use(cors())
-    app.use(bodyParser.urlencoded({ extended: true }))
-    app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
   
 
 
@@ -27,5 +29,5 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
- app.use('/',route)
+app.use('/',route)
 app.listen(8080);
