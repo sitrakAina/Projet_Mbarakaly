@@ -1,17 +1,23 @@
-var express = require('express');
-var app = express()
+const express = require('express');
+const app = express()
 
-const route = require('./Route/route')
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
+// const route = require('./Route/route')
 var cors= require('cors')
 app.use(cors())
-app.use('/',route)
+// app.use('/',route)
 
 
 // Configuring the database
-const dbConfig = require('./Config/DataBase.js');
+const dbConfig = require('./Config/config.js');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
+
+require('./Route/route')(app);
 
 // Connecting to the database
 mongoose.connect(dbConfig.url, {
