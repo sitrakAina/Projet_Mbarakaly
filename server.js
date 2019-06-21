@@ -3,12 +3,16 @@ var app = express()
 
 const route = require('./Route/route')
 var cors= require('cors')
+const bodyParser = require('body-parser');
 app.use(cors())
-app.use('/',route)
+    app.use(bodyParser.urlencoded({ extended: true }))
+    app.use(bodyParser.json())
+  
+
 
 
 // Configuring the database
-const dbConfig = require('./Config/DataBase.js');
+const dbConfig = require('./Config/config.js');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
@@ -23,5 +27,5 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
-
+ app.use('/',route)
 app.listen(8080);
