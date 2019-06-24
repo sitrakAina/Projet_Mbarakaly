@@ -2,8 +2,6 @@ const Register = require('../Models/profil.js');
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 
-
-
 exports.creerRegister = (req, res) => {
 
     if (!req.body.nom) {
@@ -19,12 +17,15 @@ exports.creerRegister = (req, res) => {
     } else {
         id = parseInt(test[test.length - 1].id) + 1
     }
+    
+    // Pour Hasher le mot de passe 
+    var hash = bcrypt.hashSync(req.body.password, salt);
 
     const register = new Register({
         _id: id,
         nom: req.body.nom,
         email: req.body.email,
-        password: req.body.password,
+        password: hash,
         photo: req.body.photo,
     });
 
@@ -38,12 +39,6 @@ exports.creerRegister = (req, res) => {
                 message: err.message || "Une erreur s'est produite lors de la création du profil."
             });
         });
-
-        bcrypt.hash(register.password, salt, (err, hash) => {
-            if (err) throw err;
-            register.password = hash;
-            register.save()
-          });
 
     })
 };
