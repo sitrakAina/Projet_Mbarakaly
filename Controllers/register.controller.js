@@ -1,8 +1,6 @@
 const Register = require('../Models/profil.js');
-
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
-var hash = bcrypt.hashSync("B4c0/\/", salt);
 
 
 
@@ -44,8 +42,7 @@ exports.creerRegister = (req, res) => {
         bcrypt.hash(register.password, salt, (err, hash) => {
             if (err) throw err;
             register.password = hash;
-            register
-              .save()
+            register.save()
           });
 
     })
@@ -63,36 +60,26 @@ exports.findAll = (req, res) => {
         });
 };
 
-// exports.findOne = (req, res) => {
+exports.login = (req, res) => {
+    Register.find() 
+        .then(user =>{
+            const login = new Register({
+                nom: req.body.nom,
+                email: req.body.email,
+                password: req.body.password
+            });
+                var r = false;
+            for(let i = 0; i<user.length; i++){
+                if((user[i].nom == login.nom || user[i].email == login.email) && bcrypt.compareSync(req.body.password, user[i].password)){
+                    r = true;
+                    res.send('Bienvenue sur l\'administrateur')
+                }
+            }
+            if(!r){
+                res.send('(nom ou email) ou mot de passe incorrect')
+            }
 
-//     Register.findById(req.params.id)
-//         .then(eleve => {
-//             Register.find()
-//                 .then(prof => {
-//                     // var tab = []
-//                     // tab.push(eleve)
-//                     // for (let i = 0; i < prof.length; i++) {
-//                     //     if(prof[i].classeoccupe.classe1 == eleve.classe || prof[i].classeoccupe.classe2 == eleve.classe){
-//                     //         tab.push(prof[i])
-//                     //     } 
-//                     // }
-//                     res.send(prof)
-//                 })
-//             if (!eleve) {
-//                 return res.status(404).send({
-//                     message: "Note not found with id " + req.params.id
-//                 });
-//             }
-//         }).catch(err => {
-//             if (err.kind === 'ObjectId') {
-//                 return res.status(404).send({
-//                     message: "Note not found with id " + req.params.id
-//                 });
-//             }
-//             return res.status(500).send({
-//                 message: "Error retrieving eleve with id " + req.params.id
-//             });
-//         });
-// };
+        })
+  };
 
 
