@@ -17,7 +17,7 @@ exports.creerRegister = (req, res) => {
     } else {
         id = parseInt(test[test.length - 1].id) + 1
     }
-    
+
     // Pour Hasher le mot de passe 
     var hash = bcrypt.hashSync(req.body.password, salt);
 
@@ -32,8 +32,7 @@ exports.creerRegister = (req, res) => {
     register.save()
         .then(data => {
             res.send(data);
-            console.log(data);
-            
+            console.log(data);    
         }).catch(err => {
             res.status(500).send({
                 message: err.message || "Une erreur s'est produite lors de la création du profil."
