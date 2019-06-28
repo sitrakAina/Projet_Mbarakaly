@@ -32,5 +32,5 @@ mongoose.connect(dbConfig.url, {
     process.exit()
 })
 
-
-app.listen(8080)
+app.use('/',route)
+app.listen(8080);
