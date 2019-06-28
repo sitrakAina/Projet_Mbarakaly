@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express()
+<<<<<<< HEAD
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -9,6 +10,19 @@ app.use(bodyParser.json())
 var cors= require('cors')
 app.use(cors())
 // app.use('/',route)
+=======
+const route = require('./Route/route')
+const cors= require('cors')
+const bodyParser = require('body-parser');
+
+
+
+app.use(cors())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+  
+
+>>>>>>> developpement
 
 
 // Configuring the database
@@ -29,5 +43,5 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
-
+app.use('/',route)
 app.listen(8080);
