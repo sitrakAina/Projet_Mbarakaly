@@ -4,12 +4,8 @@ const app = express()
 const bodyParser = require('body-parser');
 // const route = require('./Route/route')
 var cors= require('cors')
-app.use(cors())
 // app.use('/',route)
 const route = require('./Route/route')
-const cors= require('cors')
-
-
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
