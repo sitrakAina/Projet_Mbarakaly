@@ -259,3 +259,14 @@ animation-delay: 5s;
   color: #65c074;
   font-weight: bold;
 }
+
+#icon {
+  width: 35px !important;
+  height: 35px !important;
+}
+
+#h6inscrire {
+  color: #508852;
+  font-weight: bold;
+  font-size: 16px;
+}

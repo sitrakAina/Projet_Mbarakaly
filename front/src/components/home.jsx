@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask } from "mdbreact";
+import { SocialIcon } from 'react-social-icons';
 
 class Home extends Component {
     state = {
@@ -160,7 +161,11 @@ class Home extends Component {
                                             </div>
                                         </div>
                                         <button type="submit" className="btn btn-success btn-block">S'inscrire</button>
-                                    </form>
+                                    </form><br/>
+                                    <span id="h6inscrire">S'inscrire avec :</span>&nbsp;
+                                    <SocialIcon url="http://facebook.com/mbarakaly" id="icon"/> &nbsp;
+                                    <SocialIcon url="http://twitter.com/mbarakaly" id="icon"/> &nbsp;
+                                    <SocialIcon url="http://linkedin.com/mbarakaly" id="icon"/> &nbsp;
                                 </article>
                             </section></div>
                     </div>
