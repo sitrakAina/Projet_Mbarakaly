@@ -6,6 +6,7 @@ class Login extends Component {
     state = {
         collapseID: ""
     };
+    
     toggleCollapse = collapseID => () =>
         this.setState(prevState => ({
             collapseID: prevState.collapseID !== collapseID ? collapseID : ""
@@ -139,18 +140,18 @@ class Login extends Component {
                                 <article>
                                     <form>
                                         <div className="form-group">
-                                        <label id="label1">Nom d'utilisateur :</label><br/>
+                                            <label id="label1">Nom d'utilisateur :</label><br />
                                             <div className="input-group">
-                                                <input id="input1" type="text" className="form-control"  />
+                                                <input id="input1" type="text" className="form-control" />
                                             </div>
                                         </div>
                                         <div className="form-group">
-                                        <label id="label1">Mot de passe :</label><br/>
+                                            <label id="label1">Mot de passe :</label><br />
                                             <div className="input-group">
-                                                <input id="input1" type="password" className="form-control"  />
+                                                <input id="input1" type="password" className="form-control" />
                                             </div>
                                         </div>
-                
+
                                         <button type="submit" className="btn btn-success btn-block">Se connecter</button>
                                     </form>
                                 </article>
@@ -159,12 +160,12 @@ class Login extends Component {
                 </div>
                 <footer>
                     <div className="row">
-                    <div className="col-md-6">
+                        <div className="col-md-6">
                             <p>Copyright@mbarakaly 2019 | Team</p>
-                    </div>
-                    <div className="col-md-6">
-                         <p>Adresse : Immeuble Faravohitra , e-mail : mbarakaly@gmail.com</p>
-                    </div>
+                        </div>
+                        <div className="col-md-6">
+                            <p>Adresse : Immeuble Faravohitra , e-mail : mbarakaly@gmail.com</p>
+                        </div>
                     </div>
                 </footer>
             </div>
