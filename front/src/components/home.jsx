@@ -2,8 +2,34 @@ import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask } from "mdbreact";
 import { SocialIcon } from 'react-social-icons';
+const axios = require('axios');
 
 class Home extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            nom: '',
+            email: '',
+            password: ''
+         }
+        this.Change = this.Change.bind(this)
+    }
+    Change(e){this.setState({[e.target.name]: e.target.value})}
+
+    PostRegister(){
+        axios.post('http://localhost:8080/register', {
+            nom: this.state.nom,
+            email: this.state.email,
+            password: this.state.password
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+    
     state = {
         collapseID: ""
     };
@@ -49,7 +75,7 @@ class Home extends Component {
                                 <MDBNavLink to="/login" className="accueil">Se connecter</MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem active>
-                                <MDBNavLink exact to="/" className="accueil">S'inscrire</MDBNavLink>
+                                <MDBNavLink  to="/register" className="accueil">S'inscrire</MDBNavLink>
                             </MDBNavItem>
                         </MDBNavbarNav>
                     </MDBCollapse>
@@ -139,20 +165,24 @@ class Home extends Component {
                             <section id="inner-wrapper" className="login">
                                 <h2 id="h2inscrire">INSCRIPTION</h2>
                                 <article>
-                                    <form>
+                                    <form onSubmit={e => {   
+                                        e.preventDefault()
+                                        this.PostRegister()         
+                                    }
+                                    }>
                                         <div className="form-group">
                                             <div className="input-group">
-                                                <input id="input1" type="text" className="form-control" placeholder="nom d'utilisateur" />
+                                                <input id="input1" type="text" name="nom" value={this.state.nom} onChange={this.Change} className="form-control" placeholder="nom d'utilisateur" />
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <div className="input-group">
-                                                <input id="input1" type="email" className="form-control" placeholder="e-mail" />
+                                                <input id="input1" type="email" name="email" value={this.state.email} onChange={this.Change} className="form-control" placeholder="e-mail" />
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <div className="input-group">
-                                                <input id="input1" type="password" className="form-control" placeholder="mot de passe" />
+                                                <input id="input1" type="password" name="password" value={this.state.password} onChange={this.Change} className="form-control" placeholder="mot de passe" />
                                             </div>
                                         </div>
                                         <div className="form-group">
@@ -160,7 +190,7 @@ class Home extends Component {
                                                 <input id="input1" type="password" className="form-control" placeholder="Confirmer mot de passe" />
                                             </div>
                                         </div>
-                                        <button type="submit" className="btn btn-success btn-block">S'inscrire</button>
+                                        <button className="btn btn-success btn-block">S'inscrire</button>
                                     </form><br/>
                                     <span id="h6inscrire">S'inscrire avec :</span>&nbsp;
                                     <SocialIcon url="http://facebook.com/mbarakaly" id="icon"/> &nbsp;

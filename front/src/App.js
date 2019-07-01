@@ -15,6 +15,7 @@ function App() {
         <Router>
           <Route exact path="/" component={Accueil} />
           <Route path="/login" component={Login} />
+          <Route path="/register" component={Accueil} />
         </Router>
       </Provider>
     </div>

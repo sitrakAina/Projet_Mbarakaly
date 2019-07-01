@@ -48,7 +48,7 @@ class Login extends Component {
                                 <MDBNavLink to="/login" className="accueil" >Se connecter</MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem active>
-                                <MDBNavLink exact to="/" className="accueil">S'inscrire</MDBNavLink>
+                                <MDBNavLink  to="/register" className="accueil">S'inscrire</MDBNavLink>
                             </MDBNavItem>
                         </MDBNavbarNav>
                     </MDBCollapse>
