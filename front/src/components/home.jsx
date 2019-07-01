@@ -61,9 +61,9 @@ class Home extends Component {
                             <section className="wrapper">
                                 <h3 className="sentence" id="h3mbarakaly"> MBARAKALY e!!
                                 <div className="slidingVertical">
-                                        <span>SALAMA ve ??</span>
-                                        <span>In malaza ani e?? </span>
-                                        <span>Ndao mba hanalazy e!!</span>
+                                        <span>Bonjour !!!</span>
+                                        <span>ça va ??? </span>
+                                        <span>Oui ça va??Et toi???</span>
                                     </div>
                                 </h3>
                             </section>

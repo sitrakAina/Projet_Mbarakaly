@@ -45,7 +45,7 @@ class Login extends Component {
 
                         <MDBNavbarNav right>
                             <MDBNavItem active>
-                                <MDBNavLink to="/login" className="accueil">Se connecter</MDBNavLink>
+                                <MDBNavLink to="/login" className="accueil" >Se connecter</MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem active>
                                 <MDBNavLink exact to="/" className="accueil">S'inscrire</MDBNavLink>
@@ -61,9 +61,9 @@ class Login extends Component {
                             <section className="wrapper">
                                 <h3 className="sentence" id="h3mbarakaly"> MBARAKALY e!!
                                 <div className="slidingVertical">
-                                        <span>SALAMA ve ??</span>
-                                        <span>In malaza ani e?? </span>
-                                        <span>Ndao mba hanalazy e!!</span>
+                                        <span>Bonjour !!!</span>
+                                        <span>ça va ??? </span>
+                                        <span>Oui ça va??Et toi???</span>
                                     </div>
                                 </h3>
                             </section>
